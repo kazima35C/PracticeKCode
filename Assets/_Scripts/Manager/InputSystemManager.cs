@@ -1,8 +1,9 @@
 using System.Text;
 using _Scripts.Character;
+using _Scripts.Input;
 using _Scripts.Utils;
 using UnityEngine;
-namespace _Scripts.Input
+namespace _Scripts.Manager
 {
     public class InputSystemManager : MonoBehaviour
     {

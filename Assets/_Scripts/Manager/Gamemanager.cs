@@ -1,9 +1,8 @@
 using _Scripts.Character;
-using _Scripts.Input;
 using _Scripts.UI;
 using Cinemachine;
 using UnityEngine;
-namespace _Scripts
+namespace _Scripts.Manager
 {
     public class Gamemanager : MonoBehaviour
     {
