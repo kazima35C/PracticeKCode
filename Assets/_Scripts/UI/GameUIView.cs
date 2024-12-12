@@ -1,31 +1,33 @@
-using System;
+using _Scripts.Input;
 using Unity.VisualScripting;
 using UnityEngine;
-
-public class GameUIView : MonoBehaviour
+namespace _Scripts.UI
 {
-    public GuideUIView guideUIView;
-    public JoystickUIView joystickUIView;
-    InputSystemManager inputManager;
-    internal void Init(InputSystemManager characterControllerModesManager)
+    public class GameUIView : MonoBehaviour
     {
-        guideUIView.Init(characterControllerModesManager.GetDescriptions().ToSafeString());
-        joystickUIView.Init();
-
-        this.inputManager = characterControllerModesManager;
-        this.inputManager.observerCurrentInput.onChange += UpdateView;
-        UpdateView();
-    }
-
-    void UpdateView()
-    {
-        var activeJoystick = inputManager.currentInput.Contains("joystick");
-        guideUIView.UpdateView(inputManager.currentInput);
-        if (activeJoystick)
+        public GuideUIView guideUIView;
+        public JoystickUIView joystickUIView;
+        InputSystemManager inputManager;
+        internal void Init(InputSystemManager characterControllerModesManager)
         {
-            joystickUIView.Show();
-            return;
+            guideUIView.Init(characterControllerModesManager.GetDescriptions().ToSafeString());
+            joystickUIView.Init();
+
+            this.inputManager = characterControllerModesManager;
+            this.inputManager.observerCurrentInput.onChange += UpdateView;
+            UpdateView();
         }
-        joystickUIView.Hide();
+
+        void UpdateView()
+        {
+            var activeJoystick = inputManager.currentInput.Contains("joystick");
+            guideUIView.UpdateView(inputManager.currentInput);
+            if (activeJoystick)
+            {
+                joystickUIView.Show();
+                return;
+            }
+            joystickUIView.Hide();
+        }
     }
 }

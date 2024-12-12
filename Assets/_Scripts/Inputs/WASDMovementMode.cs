@@ -1,20 +1,22 @@
 using UnityEngine;
-
-
-[CreateAssetMenu(fileName = "WASDMovementMode", menuName = "MovementModes/WASD")]
-public class WASDMovementMode : MovementMode
+namespace _Scripts.Input
 {
-    public override void HandleMovement(CharacterController characterController, Transform characterTransform, Controller playerInput, float moveSpeed, float rotationSpeed, ref Vector3 moveDirection)
+
+    [CreateAssetMenu(fileName = "WASDMovementMode", menuName = "MovementModes/WASD")]
+    public class WASDMovementMode : MovementMode
     {
-
-        Vector2 inputVector = playerInput.CharacterControls.Movement.ReadValue<Vector2>();
-        Vector3 direction = new Vector3(inputVector.x, 0, inputVector.y);
-
-        if (direction.magnitude > 0.1f)
+        public override void HandleMovement(CharacterController characterController, Transform characterTransform, Controller playerInput, float moveSpeed, float rotationSpeed, ref Vector3 moveDirection)
         {
-            Quaternion targetRotation = Quaternion.LookRotation(direction, Vector3.up);
-            characterTransform.rotation = Quaternion.RotateTowards(characterTransform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+
+            Vector2 inputVector = playerInput.CharacterControls.Movement.ReadValue<Vector2>();
+            Vector3 direction = new Vector3(inputVector.x, 0, inputVector.y);
+
+            if (direction.magnitude > 0.1f)
+            {
+                Quaternion targetRotation = Quaternion.LookRotation(direction, Vector3.up);
+                characterTransform.rotation = Quaternion.RotateTowards(characterTransform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            }
+            characterController.Move(direction * moveSpeed * Time.deltaTime);
         }
-        characterController.Move(direction * moveSpeed * Time.deltaTime);
     }
 }

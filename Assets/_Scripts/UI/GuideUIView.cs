@@ -1,22 +1,25 @@
 using TMPro;
 using UnityEngine;
 
-public class GuideUIView : MonoBehaviour
+namespace _Scripts.UI
 {
-    [SerializeField] private GameObject root;
-    [SerializeField] private TextMeshProUGUI descriptionTxt;
-    [SerializeField] private TextMeshProUGUI currentInputTxt;
-
-
-    public void Init(string description)
+    public class GuideUIView : MonoBehaviour
     {
-        descriptionTxt.text = description;
-        Show();
-    }
+        [SerializeField] private GameObject root;
+        [SerializeField] private TextMeshProUGUI descriptionTxt;
+        [SerializeField] private TextMeshProUGUI currentInputTxt;
 
-    public void UpdateView(string inputName)
-    {
-        currentInputTxt.text = "CurrentInput:: " + inputName;
+
+        public void Init(string description)
+        {
+            descriptionTxt.text = description;
+            Show();
+        }
+
+        public void UpdateView(string inputName)
+        {
+            currentInputTxt.text = "CurrentInput:: " + inputName;
+        }
+        private void Show() { root.SetActive(true); }
     }
-    private void Show() { root.SetActive(true); }
 }

@@ -1,14 +1,17 @@
 using UnityEngine;
 
-public class JoystickUIView : MonoBehaviour
+namespace _Scripts.UI
 {
-    [SerializeField] private GameObject root;
-
-    public void Init()
+    public class JoystickUIView : MonoBehaviour
     {
-        Hide();
-    }
-    public void Show() { root.SetActive(true); }
-    public void Hide() { root.SetActive(false); }
+        [SerializeField] private GameObject root;
 
+        public void Init()
+        {
+            Hide();
+        }
+        public void Show() { root.SetActive(true); }
+        public void Hide() { root.SetActive(false); }
+
+    }
 }
