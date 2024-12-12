@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: PointAndClickMovementMode
   m_EditorClassIdentifier: 
   description: Point-and-Click.
+  isMoving: 1
+  lastMovementTime: 14.113215

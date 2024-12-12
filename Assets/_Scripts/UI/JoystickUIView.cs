@@ -6,8 +6,9 @@ public class JoystickUIView : MonoBehaviour
 
     public void Init()
     {
-        Show();
+        Hide();
     }
-    private void Show() { root.SetActive(true); }
+    public void Show() { root.SetActive(true); }
+    public void Hide() { root.SetActive(false); }
 
 }

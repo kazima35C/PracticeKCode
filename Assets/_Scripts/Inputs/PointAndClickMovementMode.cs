@@ -6,10 +6,17 @@ using UnityEngine.InputSystem;
 public class PointAndClickMovementMode : MovementMode
 {
     private Vector3 targetPoint;
-    private bool isMoving = false;
+    public bool isMoving = false;
+    public float lastMovementTime;
+    private float resetThreshold = .2f; // Time in seconds to reset movement
 
     public override void HandleMovement(CharacterController characterController, Transform characterTransform, Controller playerInput, float moveSpeed, float rotationSpeed, ref Vector3 moveDirection)
     {
+        if (isMoving && (Mathf.Abs(Time.time - lastMovementTime) > resetThreshold))
+        {
+            isMoving = false;
+        }
+        lastMovementTime = Time.time;
         if (Mouse.current.leftButton.wasPressedThisFrame)
         {
             Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
@@ -24,7 +31,6 @@ public class PointAndClickMovementMode : MovementMode
         {
             Vector3 direction = (targetPoint - characterTransform.position).normalized;
             direction.y = 0;
-
             if (Vector3.Distance(characterTransform.position, targetPoint) > 0.1f)
             {
                 Quaternion targetRotation = Quaternion.LookRotation(direction, Vector3.up);
@@ -37,5 +43,8 @@ public class PointAndClickMovementMode : MovementMode
                 isMoving = false;
             }
         }
+
+
     }
+
 }

@@ -1,9 +1,11 @@
-using System.Linq;
 using System.Text;
+using _Scripts.Utils;
 using UnityEngine;
 
 public class InputSystemManager : MonoBehaviour
 {
+    public Observable<string> observerCurrentInput;
+    public string currentInput => observerCurrentInput.value;
     [SerializeField] private CharacterControllerMovement controllerModes;
     [SerializeField] private MovementMode[] availableMovementModes;
     private Controller playerInputController;
@@ -21,14 +23,15 @@ public class InputSystemManager : MonoBehaviour
 
         this.controllerModes.Init(playerInputController);
         this.controllerModes.SwitchMode(availableMovementModes[0]);
+        observerCurrentInput.value = availableMovementModes[0].description;
     }
 
     private void SwitchMovementMode(int modeIndex)
     {
-        Debug.Log(modeIndex);
         if (modeIndex >= 0 && modeIndex < availableMovementModes.Length)
         {
             controllerModes.SwitchMode(availableMovementModes[modeIndex]);
+            observerCurrentInput.value = availableMovementModes[modeIndex].description;
         }
     }
 
