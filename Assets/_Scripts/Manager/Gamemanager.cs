@@ -1,15 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using Cinemachine;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 
 public class Gamemanager : MonoBehaviour
 {
-    public CharacterControllerMovement prefabCharacter;
-    public CharacterControllerModesManager characterControllerModesManager;
-    public CinemachineVirtualCamera cinemachineVirtualCamera;
-    public Transform parentCharcater;
+    [SerializeField] private CharacterControllerMovement prefabCharacter;
+    [SerializeField] private InputSystemManager characterControllerModesManager;
+    [SerializeField] private CinemachineVirtualCamera cinemachineVirtualCamera;
+    [SerializeField] private Transform parentCharcater;
+    [SerializeField] private GameUIView gameUIView;
+
     private void Start()
     {
         Init();
@@ -18,6 +17,7 @@ public class Gamemanager : MonoBehaviour
     {
         var charcater = Instantiate(prefabCharacter, parentCharcater);
         characterControllerModesManager.Init(charcater);
+        gameUIView.Init(characterControllerModesManager);
         SetCamera(charcater.transform);
     }
 

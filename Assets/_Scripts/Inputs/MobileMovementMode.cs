@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 [CreateAssetMenu(fileName = "MobileMovementMode", menuName = "MovementModes/Mobile")]
 public class MobileMovementMode : MovementMode
@@ -26,9 +25,7 @@ public class MobileMovementMode : MovementMode
         // محاسبه حرکت دستی
         if (direction.magnitude > 0.1f)
         {
-            moveDirection = direction.normalized * moveSpeed * Time.deltaTime;
-            Vector3 newPosition = characterTransform.position + moveDirection;
-            characterTransform.position = newPosition;
+            characterController.Move(direction * moveSpeed * Time.deltaTime);
         }
     }
 }

@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fa9e9d0e2b9bd646ae478d026659078, type: 3}
   m_Name: WASDMovementMode
   m_EditorClassIdentifier: 
+  description: WASD movement.

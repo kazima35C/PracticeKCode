@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 695b067da1cf6334bad6ec867b818a35, type: 3}
   m_Name: PointAndClickMovementMode
   m_EditorClassIdentifier: 
+  description: Point-and-Click.

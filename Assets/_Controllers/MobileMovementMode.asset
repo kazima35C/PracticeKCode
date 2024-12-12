@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 806bb19cdea8c814c9f882ad66a98af2, type: 3}
   m_Name: MobileMovementMode
   m_EditorClassIdentifier: 
+  description: Mobile joystick.

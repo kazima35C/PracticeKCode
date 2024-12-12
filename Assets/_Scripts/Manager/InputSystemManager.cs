@@ -1,6 +1,8 @@
+using System.Linq;
+using System.Text;
 using UnityEngine;
 
-public class CharacterControllerModesManager : MonoBehaviour
+public class InputSystemManager : MonoBehaviour
 {
     [SerializeField] private CharacterControllerMovement controllerModes;
     [SerializeField] private MovementMode[] availableMovementModes;
@@ -28,5 +30,15 @@ public class CharacterControllerModesManager : MonoBehaviour
         {
             controllerModes.SwitchMode(availableMovementModes[modeIndex]);
         }
+    }
+
+    public StringBuilder GetDescriptions()
+    {
+        StringBuilder desc = new StringBuilder();
+        for (int i = 0; i < availableMovementModes.Length; i++)
+        {
+            desc.AppendLine($"numpad{i + 1} => {availableMovementModes[i].description}");
+        }
+        return desc;
     }
 }
