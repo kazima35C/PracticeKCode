@@ -5,8 +5,8 @@ namespace _Scripts.UI
 {
     public class GameUIView : MonoBehaviour
     {
-        public GuideUIView guideUIView;
-        public JoystickUIView joystickUIView;
+        [SerializeField] private GuideUIView guideUIView;
+        [SerializeField] private JoystickUIView joystickUIView;
         InputSystemManager inputManager;
         internal void Init(InputSystemManager characterControllerModesManager)
         {

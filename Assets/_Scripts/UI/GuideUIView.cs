@@ -9,7 +9,6 @@ namespace _Scripts.UI
         [SerializeField] private TextMeshProUGUI descriptionTxt;
         [SerializeField] private TextMeshProUGUI currentInputTxt;
 
-
         public void Init(string description)
         {
             descriptionTxt.text = description;
